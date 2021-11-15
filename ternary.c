@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include <ctype.h>
 
 
 struct node{
@@ -108,6 +108,7 @@ int main()
 	char c;
 	while(c=getchar())
 	{
+		tolower(c);
 		if(c==' ' || c=='\n')
 		{
 			search(root,s)==1 ? printf("%s ",s):printf("\e[4m%s\e[0m ",s);
@@ -118,6 +119,7 @@ int main()
 		{
             strncat(s,&c,1);
 		}
+		//if(strcmp(s,"exit")) return 0;
 	}
             
 }
