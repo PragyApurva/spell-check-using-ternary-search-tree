@@ -91,25 +91,25 @@ int main()
 	char a;
 	char word[100]="";
 	
-	          while ((a=fgetc(fptr))!=EOF)
-             { 
-            
-				if(a =='\n')
-				{
-                   insert(&root,word);
-				   memset(word,0,strlen(word));
-				}
-				else{
-				    strncat(word,&a,1);
-				}
-             } 
+	while ((a=fgetc(fptr))!=EOF)
+	{ 
+		if(a =='\n')
+		{
+			insert(&root,word);
+			memset(word,0,strlen(word));
+		}
+		else
+		{
+			strncat(word,&a,1);
+		}
+	} 
 
     char s[100]="";
 	char c;
 	while(c=getchar())
 	{
-		tolower(c);
-		if(c==' ' || c=='\n')
+		c=tolower(c);
+		if(c==' ' || c=='\n'||c==','||c=='.'||c=='!'||c=='?'||c==';'||c==':')
 		{
 			search(root,s)==1 ? printf("%s ",s):printf("\e[4m%s\e[0m ",s);
 			printf("\e[0m");
@@ -119,7 +119,8 @@ int main()
 		{
             strncat(s,&c,1);
 		}
-		//if(strcmp(s,"exit")) return 0;
+		int val=strcmp(s,"exit");
+		if(val==0) return 0;
 	}
             
 }
