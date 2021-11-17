@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include <ctype.h>
 
 
 struct node{
@@ -134,24 +134,25 @@ int main()
 	char real[100]="";
 	char word[100]="";
 	
-	          while ((a=fgetc(fptr))!=EOF)
-             { 
-            
-				if(a =='\n')
-				{
-                   insert(&root,word);
-				   memset(word,0,strlen(word));
-				}
-				else{
-				    strncat(word,&a,1);
-				}
-             } 
+	while ((a=fgetc(fptr))!=EOF)
+	{ 
+		if(a =='\n')
+		{
+			insert(&root,word);
+			memset(word,0,strlen(word));
+		}
+		else
+		{
+			strncat(word,&a,1);
+		}
+	} 
 
     char s[100]="";
 	char c;
 	while(c=getchar())
 	{
-		if(c==' ' || c=='\n')
+		c=tolower(c);
+		if(c==' ' || c=='\n'||c==','||c=='.'||c=='!'||c=='?'||c==';'||c==':')
 		{
 			
 			if(search(root,s))
@@ -171,6 +172,8 @@ int main()
 		{
             strncat(s,&c,1);
 		}
+		int val=strcmp(s,"exit");
+		if(val==0) return 0;
 	}
             
 }
