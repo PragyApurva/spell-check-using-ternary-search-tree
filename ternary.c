@@ -1,4 +1,4 @@
-// C program to insert a node in AVL tree
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -13,6 +13,17 @@ struct node{
 	struct node* equal;
 };
 
+struct Node{
+    struct node* first;
+    char second[100];
+    int third;
+};
+
+struct qnode
+{
+    struct Node* newnode;
+    struct qnode* next;
+};
 
 struct node* newnode(char ch)
 {
@@ -58,68 +69,167 @@ int search(struct node* root,char *word)
 	}
 	if(*word<(root)->ch)
 	{
+		
 		return search(root->left,word);
+		
 	}
 	else if(*word>(root)->ch)
 	{
 		return search(root->right,word);
+		
+
 	}
 	else
 	{
 		if(*(word+1)=='\0')
 		{
+		
 			return root->end;
 		}
 		else
 		{
+			
 			return search(root->equal,word+1);
+			
 		}
 	}
 }
 
-void suggest(struct node* root,char *word,char *real,int c)
+
+struct qnode* head=NULL;
+struct qnode* tail=NULL;
+void push(struct node* curr,char *str,int val)
 {
-	if(root==NULL)
-	{
-		return ;
-	}
-	if(*word<(root)->ch)
-	{
-		if(root->left!=NULL &&   root->left->ch==word[0])
-		{
-			c=1;
-		}
-		
-		if(root->left!=NULL && c==1){
-			
-        strncat(real,&root->left->ch,1);
-		}
-		return suggest(root->left,word,real,c);
-	}
-	else if(*word>(root)->ch)
-	{
-		if(root->right!=NULL &&   root->right->ch==word[0])
-		{
-			c=1;
-		}
-		if(root->right!=NULL && c==1){
-		strncat(real,&root->right->ch,1);
-		}
-		return suggest(root->right,word,real,c);
-	}
-	else
-	{
-		   if(root->equal!=NULL && root->equal->ch==word[0])
-		{
-			c=1;
-		}
-		    if(root->equal!=NULL && c==1){
-		    strncat(real,&root->equal->ch,1);
-			}
-			return suggest(root->equal,word+1,real,c);
-		
-	}
+   struct Node* temp=(struct Node*)malloc(sizeof(struct Node));
+   temp->first=curr;
+   strncpy(temp->second,"",sizeof(temp->second));
+   strncat(temp->second,str,strlen(str));
+   temp->third=val;
+   struct qnode* temp2=(struct qnode*)malloc(sizeof(struct qnode));
+   temp2->newnode=temp;
+   if(head==NULL)
+   {
+      head=temp2;
+      tail=temp2;
+      temp2->next=NULL;
+   }
+   else
+   {
+       tail->next=temp2;
+       tail=temp2;
+       temp2->next=NULL;
+   }
+   
 }
+
+struct Node* pop()
+{
+    struct Node* temp=head->newnode;
+    head=head->next;
+    return temp;
+}
+
+int empty()
+{
+    if(head==NULL)return 1;
+    else return 0;
+}
+
+char** bfs(struct node* root,char *str)
+{
+    char** substr=malloc(100*sizeof(char*));
+    for(int i=0;i<100;i++)
+    {
+        substr[i]=malloc(100*sizeof(char));
+        strncpy(substr[i],"",sizeof(substr[i]));
+    }
+    struct node* cur=(struct node*)malloc(sizeof(struct node));
+    push(root,str,1);
+    int i=0;
+    while(!empty())
+    {
+        struct Node* temp;
+        temp=pop();
+        cur=temp->first;
+        char str[100]="";
+        strncpy(str,"",sizeof(str));
+        strncat(str,temp->second,strlen(temp->second));
+        int add=temp->third;
+        
+        if(cur->end==1 && add==1)
+        {
+            strncat(substr[i],str,strlen(str));
+            i++;
+        }
+        if(i==99)break;
+        if(cur->left!=NULL)push(cur->left,str,0);
+        if(cur->equal!=NULL)push(cur->equal,strncat(str,&(cur->ch),1),1);
+        if(cur->right!=NULL)push(cur->right,str,0);
+    }
+    return substr;
+}
+
+
+void final(struct node* root,char* str,char* ret,struct node* temp)
+{
+    int add=0;
+
+    while(search(temp,ret)!=1)
+    {
+        if(root->equal==NULL)
+        {
+            if(root->left!=NULL)
+            {
+                root=root->left;
+            }
+            else
+            {
+                root=root->right;
+            }
+        }
+        else{
+        strncat(ret,&(root->ch),1);
+        if(search(temp,ret))
+        {
+            return ;
+        }
+        add=1;
+        root=root->equal;
+        }
+    }
+}
+
+
+void suggest(struct node* root,char *str,char *ret,struct node* temp)
+{
+    char** substr=malloc(100*sizeof(char*));
+    for(int i=0;i<100;i++)
+    {
+        substr[i]=malloc(100*sizeof(char));
+        substr[i]="";
+    }
+    struct node* prev=NULL;
+    int n=strlen(str);
+    int i=0;
+    while(i<n)
+    {
+        if(root==NULL)return ;
+        if(root->ch==str[i])
+        {
+            prev=root;
+            root=root->equal;
+            i++;
+            continue;
+        }
+        if(root->ch<str[i])root=root->right;
+        else root=root->left;
+    }
+    strncpy(ret,str,strlen(str));
+    final(root,str,ret,temp);
+}
+
+
+
 
 int main()
 {
@@ -149,8 +259,11 @@ int main()
 
     char s[100]="";
 	char c;
+	char cha;
+    struct node* temp=root;
 	while(c=getchar())
 	{
+        char** substr;
 		c=tolower(c);
 		if(c==' ' || c=='\n'||c==','||c=='.'||c=='!'||c=='?'||c==';'||c==':')
 		{
@@ -160,9 +273,14 @@ int main()
 				printf("%s ",s);
 			}
 			else{
-				int c=0;
-				suggest(root,s,real,c);
-				printf(" \e[4m%s\e[0m (did you mean %s)",s,real);
+				suggest(root,s,real,temp);
+                root=temp;
+				printf(" \e[4m%s\e[0m ",s);
+				printf("(did you mean: ");
+				printf("%s",real);
+                
+				printf(")");
+            
 				memset(real,0,strlen(real));
 			}
 			

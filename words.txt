@@ -10,6 +10,7 @@
 9
 0
 
+a
 aardvark
 aargh
 aback
@@ -8414,8 +8415,8 @@ few
 fewer
 fey
 fez
-fiancã©
-fiancã©e
+fiancï¿½
+fiancï¿½e
 fiasco
 fib
 fibber
@@ -9731,7 +9732,6 @@ goners
 gong
 gonorrhoea
 gonzo
-goo
 goober
 goobers
 good
@@ -14603,6 +14603,7 @@ mutually
 muumuu
 muzzle
 me
+my
 myriad
 myrtle
 myself
@@ -19974,7 +19975,7 @@ shepherds
 sheriff
 sherlock
 sherry
-she’s
+sheï¿½s
 shh
 shield
 shielded
@@ -21052,7 +21053,7 @@ spells
 spelt
 Spence
 spencer
-spencer’s
+spencerï¿½s
 spend
 spender
 spending
@@ -22697,7 +22698,7 @@ thereby
 therefore
 therein
 thereof
-there’s
+thereï¿½s
 thermal
 thermometer
 thermonuclear
@@ -23086,7 +23087,7 @@ tots
 touch
 touchdown
 touchdowns
-touché
+touchï¿½
 touched
 touches
 touching
@@ -24763,7 +24764,7 @@ what
 whatchamacallit
 whatever
 whatnot
-what’s
+whatï¿½s
 whatsoever
 wheat
 wheel
