@@ -176,18 +176,7 @@ void final(struct node* root,char* str,char* ret,struct node* temp)
 
     while(search(temp,ret)!=1)
     {
-        if(root->equal==NULL)
-        {
-            if(root->left!=NULL)
-            {
-                root=root->left;
-            }
-            else
-            {
-                root=root->right;
-            }
-        }
-        else{
+        
         strncat(ret,&(root->ch),1);
         if(search(temp,ret))
         {
@@ -195,7 +184,7 @@ void final(struct node* root,char* str,char* ret,struct node* temp)
         }
         add=1;
         root=root->equal;
-        }
+        
     }
 }
 
