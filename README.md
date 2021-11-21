@@ -15,6 +15,13 @@ To make a spell checkere we need a dictionary through which words can be checked
 * It will print your word/paragraph and underlined the words which are not in our word list file (dictonary)
 * To exit the program write **exit** in terminal
 
+### Input
+Any sentence / paragraph
+Eg: hi this is a spelling checking progr
+
+### Output
+hi this is a spelling checking progr(underlined) (did you mean: program)
+
 ## Example
 
 ![sample](https://user-images.githubusercontent.com/83273672/142764964-16c04f2f-20ab-4027-9c7c-d7e717f357d2.png)
