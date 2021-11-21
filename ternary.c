@@ -102,7 +102,9 @@ int search(struct node *root, char *word)
 	}
 }
 
-
+//This function iterates from the node where the last character of the "wrong" string was found 
+//it goes to equal child pointer of the root and keeps adding its character to the "wrong string"
+//this goes until we found that string is present in TST
 void final(struct node *root, char *str, char *ret, struct node *temp)
 {
 	int add = 0;
