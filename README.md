@@ -17,4 +17,4 @@ To make a spell checkere we need a dictionary through which words can be checked
 
 #Example
 
-https://github.com/PragyApurva/2020mcb1250_2020mcb1249_2020mcb1229_spell-check-using-ternary-search-tree/example/sample.png?raw=true
+https://github.com/shivam6351/2020mcb1250_2020mcb1249_2020mcb1229_spell-check-using-ternary-search-tree/blob/main/Example/sample.png?raw=true
