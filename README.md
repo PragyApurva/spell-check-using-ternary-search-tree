@@ -15,6 +15,6 @@ To make a spell checkere we need a dictionary through which words can be checked
 * It will print your word/paragraph and underlined the words which are not in our word list file (dictonary)
 * To exit the program write **exit** in terminal
 
-#Example
+# Example
 
 https://github.com/shivam6351/2020mcb1250_2020mcb1249_2020mcb1229_spell-check-using-ternary-search-tree/blob/main/Example/sample.png
