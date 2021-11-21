@@ -17,11 +17,11 @@ To make a spell checkere we need a dictionary through which words can be checked
 
 ### Input
 Any sentence / paragraph
-Eg: hi this is a spelling checking progr
+* Eg: hi this is a spelling checking progr
 
 ### Output
 hi this is a spelling checking progr(underlined) (did you mean: program)
-If pressed exit the program will terminate
+* If type "exit" the program will terminate
 
 ## Example
 
