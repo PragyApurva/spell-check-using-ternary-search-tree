@@ -7,6 +7,7 @@
 //Node of ternary search tree
 struct node 
 {
+	char hi;
 	char ch; //character to enter
 	int end; //determine if word is ended here or not
 	//3 children of tst
