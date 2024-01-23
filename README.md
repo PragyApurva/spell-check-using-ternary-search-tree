@@ -21,6 +21,9 @@ Any sentence / paragraph
 
 ### Output
 hi this is a spelling checking progr(underlined) (did you mean: program)
+
+### Presentation
+https://docs.google.com/presentation/d/1yu0sJJQASeUT1dadXSq-353pEAjcvEsJG0Pkscl5egU/edit#slide=id.g104428b8f1e_2_0
 * If type "exit" the program will terminate
 
 ## Example
